@@ -69,11 +69,17 @@ const plans = [
 
 export function Plans() {
   return (
-    <section className="py-20 bg-gray-50" id="planes">
+    <section 
+    id="planes"
+    className="py-20 bg-gray-50 dark:bg-gray-900"
+    >
       <div className="container mx-auto px-4 max-w-6xl">
+
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Planes y Precios</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+            Planes y Precios
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Selecciona el plan que mejor se adapte a tus necesidades. Todos incluyen diseño profesional y soporte técnico.
           </p>
         </div>
@@ -82,9 +88,7 @@ export function Plans() {
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className={`bg-white rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 ${
-                plan.highlight ? 'ring-2 ring-blue-500' : ''
-              }`}
+              className={`bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-105 transform ${plan.highlight ? 'ring-2 ring-blue-500' : ''}`}
             >
               {plan.highlight && (
                 <div className="bg-blue-500 text-white text-center py-2 text-sm font-semibold">
@@ -93,17 +97,17 @@ export function Plans() {
               )}
               
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-1">{plan.name}</h3>
-                <p className="text-gray-600 mb-4">{plan.subtitle}</p>
+                <h3 className="text-2xl font-bold mb-1 text-gray-800 dark:text-gray-100">{plan.name}</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">{plan.subtitle}</p>
                 
                 <div className="mb-6">
                   <span className="text-4xl font-bold">
                     {typeof plan.price === 'string' ? plan.price : `$${plan.price}`}
                   </span>
-                  {plan.price !== 'Consultar' && <span className="text-gray-600"> USD</span>}
+                  {plan.price !== 'Consultar' && <span className="text-gray-600 dark:text-gray-400"> USD</span>}
                 </div>
                 
-                <div className="text-sm text-gray-600 mb-6">
+                <div className="text-sm text-gray-600 dark:text-gray-400 mb-6">
                   Tiempo estimado: {plan.delivery}
                 </div>
                 
@@ -111,17 +115,16 @@ export function Plans() {
                   {plan.features.map((feature, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span className="text-gray-600 text-sm">{feature}</span>
+                      <span className="text-gray-600 dark:text-gray-400 text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
                 
-                <div className="text-sm text-gray-500 mb-6">
+                <div className="text-sm text-gray-500 dark:text-gray-400 mb-6">
                   Tecnologías: {plan.tech}
                 </div>
                 
-                <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg 
-                  hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+                <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
                   Solicitar Plan <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

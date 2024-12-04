@@ -20,21 +20,26 @@ const projects = [
 
 export function Portfolio() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-4xl font-bold text-center mb-16">Proyectos Destacados</h2>
+
+        <h2 className="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-gray-100">
+          Proyectos Destacados
+        </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg 
-              hover:shadow-xl transition-shadow">
+            <div 
+              key={index} 
+              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+            >
               <img 
                 src={project.image} 
                 alt={project.title}
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-gray-600">{project.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{project.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{project.description}</p>
               </div>
             </div>
           ))}

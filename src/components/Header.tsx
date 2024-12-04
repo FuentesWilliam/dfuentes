@@ -1,40 +1,36 @@
 import React, { useState } from 'react';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 import clsx from 'clsx'; // Instalar con `npm install clsx`
 
 export function Header() {
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
-
-  const handleNavClick = (section: string) => {
-    setActiveSection(section);
-    setMobileMenuOpen(false); // Cierra el menú en móviles al hacer clic
-  };
 
   const NavLinks = () => (
     <nav className="flex flex-col md:flex-row md:items-center md:space-x-8 space-y-4 md:space-y-0">
       {[
-        { id: 'inicio', label: 'Inicio' },
-        { id: 'servicios', label: 'Servicios' },
+        { id: 'hero', label: 'Inicio' },
         { id: 'planes', label: 'Planes' },
+        { id: 'servicios', label: 'Servicios' },
         { id: 'contacto', label: 'Contacto' },
       ].map((link) => (
-        <a
+        <ScrollLink
           key={link.id}
-          href={`#${link.id}`}
-          className={clsx(
-            'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400',
-            activeSection === link.id && 'font-bold text-blue-600 dark:text-blue-400'
-          )}
-          onClick={() => handleNavClick(link.id)}
-          aria-current={activeSection === link.id ? 'page' : undefined}
+          to={link.id}
+          smooth={true}
+          offset={-70} // Ajusta según la altura del header
+          duration={500}
+          spy={true}
+          activeClass="font-bold text-blue-600 dark:text-blue-400"
+          className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+          onClick={() => setMobileMenuOpen(false)} // Cierra el menú móvil al hacer clic
         >
           {link.label}
-        </a>
+        </ScrollLink>
       ))}
     </nav>
   );
@@ -45,8 +41,8 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a
-            href="#"
-            className="text-2xl font-bold text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
+            onClick={() => scroll.scrollToTop()}
+            className="text-2xl font-bold text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer"
           >
             MiLogo
           </a>

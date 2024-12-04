@@ -18,12 +18,18 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-4xl font-bold text-center mb-16">Lo que dicen nuestros clientes</h2>
+
+        <h2 className="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-gray-100">
+          Lo que dicen nuestros clientes
+        </h2>
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-gray-50 p-8 rounded-xl">
+            <div 
+              key={index} 
+              className="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl shadow-lg dark:shadow-xl"
+            >
               <div className="flex items-center gap-4 mb-4">
                 <img 
                   src={testimonial.image} 
@@ -31,8 +37,8 @@ export function Testimonials() {
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div>
-                  <h3 className="font-semibold">{testimonial.name}</h3>
-                  <p className="text-gray-600">{testimonial.role}</p>
+                  <h3 className="font-semibold text-gray-800 dark:text-gray-100">{testimonial.name}</h3>
+                  <p className="text-gray-600 dark:text-gray-400">{testimonial.role}</p>
                 </div>
               </div>
               <div className="flex gap-1 mb-4">
@@ -40,7 +46,7 @@ export function Testimonials() {
                   <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-              <p className="text-gray-700">{testimonial.content}</p>
+              <p className="text-gray-700 dark:text-gray-400">{testimonial.content}</p>
             </div>
           ))}
         </div>
